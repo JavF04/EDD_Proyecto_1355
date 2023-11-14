@@ -28,10 +28,10 @@ Con esto, la actualización se completa con éxito.
 Para ellos simplemente debe de cambiar, eliminar o agregar archivos o carpetas dentro de la carpeta del repositorio, con ello después podrá subir los cambios.
 En caso de que se arrepienta de algún cambio que hizo, puede usar los siguientes comandos:
 - git checkout -- "nombre del archivo": Este comando revierte un archivo a como se encuentra en GitHub antes de algún cambio hecho.
-- git -- hard: Este comando resetea el repositorio de su pc a como esta en GitHub.
+- git reset -- hard: Este comando resetea el repositorio de su pc a como esta en GitHub.
 >Los siguientes comandos se usan cuando se arrepiente de algún archivo subido a git add . 
 Pudiera darse el caso que hayas hecho "git add" de un archivo que ahora pretendes descartar. En ese caso ese archivo está almacenado provisionalmente, en el espacio que se conoce como "staging area".
-- git -- hard: Resetea también los cambios hechos en git add .
+- git reset -- hard: Resetea también los cambios hechos en git add .
 Si desea revertir sólo un archivo de los subidos a git add, debe de usar los dos comandos siguientes:
 - git reset HEAD "nombre del archivo"
 - git checkout -- "nombre del archivo"
@@ -42,7 +42,7 @@ Una vez que haya hecho los cambios necesarios, deberá de seguir los siguientes 
 - En GitBash, en el repositorio, use git checkout -b "feat/iniciales": Crea la rama desde la cual se sube los archivos.
 - git add .
 - git commit -m "Mensaje de lo que se sube"
-- git pull origin "feat/iniciales"
+- git push origin "feat/iniciales"
 - El link de retorno, se copia y se abre en Google.
 - Se configura el nombre del PR y se colocan comentarios si así lo desea.
 - Arriba a la izquierda configure que el cambio se hará a la rama dev desde la rama "feat/iniciales"
