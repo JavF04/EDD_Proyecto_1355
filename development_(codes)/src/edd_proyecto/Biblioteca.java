@@ -2,13 +2,9 @@ package edd_proyecto;
 import java.util.*;
 import javax.swing.*;
 public class Biblioteca {
-	public class Libro{
-		public Libro() {
-		}
-	}
 	public class Usuario{
 		public ArrayList<Libro> libros_prestados = new ArrayList<Libro>();
-		public Libro libros_reservados = new Libro();
+		public Libro libros_reservados = null;
 		public boolean reserva = true;
 		public String isbn = "0";
 	}
@@ -50,7 +46,7 @@ public class Biblioteca {
                             admin_df.dataframe.iloc[admin_df._index,3],
                             admin_df.dataframe.iloc[admin_df._index,4]
                         );*/
-					libro_obj = new Libro();
+					libro_obj = null;
 					usuario.libros_prestados.add(libro_obj);
 					/*libro_obj.mostrar_libro()
                     libro_obj._cambiar_estado(admin_df.dataframe,
@@ -121,7 +117,7 @@ public class Biblioteca {
 			                            admin_df.dataframe.iloc[admin_df._index,3],
 			                            admin_df.dataframe.iloc[admin_df._index,4]
 			                        )*/
-            					libro_obj = new Libro();          
+            					libro_obj = null;          
             					JOptionPane.showMessageDialog(null,"Los datos del libro son:");
             					//libro_obj.mostrar_libro()
             					usuario.libros_reservados = libro_obj;
