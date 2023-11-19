@@ -8,7 +8,8 @@ public class Biblioteca {
 		public boolean reserva = true;
 		public String isbn = "0";
 	}
-	//private df_lista_libros = null;
+	ArrayList<Libro> libros_biblioteca = new ArrayList<Libro>();
+
 	public Biblioteca() {
 	}
 	/*public crear_df() {
@@ -191,4 +192,5 @@ public class Biblioteca {
 		}
 		return 0;
 	}
+	
 }

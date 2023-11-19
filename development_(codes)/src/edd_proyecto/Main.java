@@ -9,8 +9,7 @@ public class Main {
         MenuUsuario menu_obj = new MenuUsuario(biblioteca_obj);
         JOptionPane.showMessageDialog(null,"Bienvenido a \"Bukku \" su biblioteca favorita.");
         if (menu_obj._menu_inicial(menu_obj._validar_usuario) == 0) {
-        	 JOptionPane.showMessageDialog(null,"Hasta la proxima");
-             
+        	 JOptionPane.showMessageDialog(null,"Hasta la proxima"); 
         }
     }
 
