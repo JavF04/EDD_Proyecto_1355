@@ -14,9 +14,10 @@ public class AdminArchivo {
         }
     }
 
-    public void leerArchivo() {
+    public void crear_listas(Biblioteca biblioteca) {
         ArrayList<String[]> datos_separados = new ArrayList<>();
-
+        String titulo=null, autor=null, genero=null, isbn=null;
+        Integer copias=null;
         try (BufferedReader br = new BufferedReader(new FileReader(nombre_archivo))) {
             String linea;
             while ((linea = br.readLine()) != null) {
@@ -26,14 +27,31 @@ public class AdminArchivo {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-        // Ahora los datos separados están almacenados en la lista 'datos_separados'
-        // Puedes acceder a cada conjunto de datos individualmente
-        for (String[] datos : datos_separados) {
-            for (String dato : datos) {
-                System.out.print(dato + " "); // Imprime cada dato separado por espacio
-            }
-            System.out.println(); // Salto de línea para la siguiente línea de datos
+        for (Integer i=0; i<datos_separados.size(); i++) {
+            	for(Integer j=0; j<5; j++){
+            		switch(j) {
+            		case 0:
+            			titulo = datos_separados.get(i)[j];
+            			break;
+            		case 1:
+            			autor = datos_separados.get(i)[j];
+            			break;
+            		case 2:
+            			genero = datos_separados.get(i)[j];
+            			break;
+            		case 3:
+            			copias = Integer.parseInt(datos_separados.get(i)[j]);
+            			break;
+            		case 4:
+            			isbn = datos_separados.get(i)[j];
+            			break;
+            		}
+            	}
+				Libro libro_obj_aux = new Libro(titulo, autor, genero, copias, isbn);	
+				biblioteca.libros_biblioteca.add(libro_obj_aux);
         }
+        }
+    public void crear_listas(MenuUsuario menu_usuario) {
+    	
     }
 }
