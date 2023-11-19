@@ -7,17 +7,15 @@ public class Usuario {
     private String nombreUsuario;
     private String password;
     private int codigoUsuario;
-    private List<Libro> librosPrestados;
-    private Libro librosReservados;
-    private boolean reserva;
+    private int tipoUsuario;
+  
 
-    public Usuario(String nombreUsuario, String password, int codigoUsuario) {
+    public Usuario(String nombreUsuario, String password, int codigoUsuario, int tipoUsuario) {
         this.nombreUsuario = nombreUsuario;
         this.password = password;
         this.codigoUsuario = codigoUsuario;
-        this.librosPrestados = new ArrayList<>();
-        this.librosReservados = null;
-        this.reserva = false;
+        this.tipoUsuario=tipoUsuario;
+      
     }
 
     public String getNombreUsuario() {
@@ -32,17 +30,6 @@ public class Usuario {
         return codigoUsuario;
     }
 
-    public List<Libro> getLibrosPrestados() {
-        return librosPrestados;
-    }
-
-    public Libro getLibrosReservados() {
-        return librosReservados;
-    }
-
-    public boolean getReserva() {
-        return reserva;
-    }
 
     public void setNombreUsuario(String nombre) {
         this.nombreUsuario = nombre;
@@ -56,11 +43,18 @@ public class Usuario {
         this.codigoUsuario = codigo;
     }
 
-    public void setLibrosReservados(Libro libro) {
-        this.librosReservados = libro;
-    }
-
-	public void setReserva(boolean reserva) {
-		this.reserva = reserva;
+	public int getTipoUsuario() {
+		return tipoUsuario;
 	}
+
+	public void setTipoUsuario(int tipoUsuario) {
+		this.tipoUsuario = tipoUsuario;
+	}
+
+   
 }
+
+
+
+
+
