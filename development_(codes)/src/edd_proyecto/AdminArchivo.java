@@ -69,7 +69,7 @@ public class AdminArchivo {
                 		switch(j) {
                 		case 0:
                 			nombreUsuario = datos_separados.get(i)[j];
-                			break;
+                			break; 
                 		case 1:
                 			password = datos_separados.get(i)[j];
                 			break;
