@@ -46,9 +46,28 @@ public class AdminArchivo {
                         break;
                 }
             }
+<<<<<<< HEAD
             Libro libro_obj_aux = new Libro(titulo, autor, genero, copias, isbn);
             biblioteca.libros_biblioteca.add(libro_obj_aux);
         }
+=======
+            for (Integer i=0; i<datos_separados.size(); i++) {
+                	for(Integer j=0; j<5; j++){
+                		switch(j) {
+                		case 0:
+                			nombreUsuario = datos_separados.get(i)[j];
+                			break; 
+                		case 1:
+                			password = datos_separados.get(i)[j];
+                			break;
+                		
+                		}
+                	}
+    				Usuario usuario_obj_aux = new Usuario(nombreUsuario, password,menu_usuario.usuarios.size() );	
+    				menu_usuario.usuarios.add(usuario_obj_aux);
+            }
+            
+>>>>>>> 683ebda5f27103037320a958f0db260034c1aecb
     }
 
     public void crear_listas(MenuUsuario menu_usuario) throws ParseException {
