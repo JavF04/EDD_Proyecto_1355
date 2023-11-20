@@ -1,6 +1,5 @@
 package edd_proyecto;
 
-<<<<<<< HEAD
 import java.util.Date;
 
 import javax.swing.JOptionPane;
@@ -86,8 +85,4 @@ public class UsuarioCliente extends Usuario {
     public void setFechaPrestacion(Date fechaPrestacion) {
         this.fechaPrestacion = fechaPrestacion;
     }
-=======
-public class UsuarioCliente {
-
->>>>>>> 683ebda5f27103037320a958f0db260034c1aecb
 }
