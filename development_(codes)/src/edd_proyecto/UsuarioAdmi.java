@@ -8,7 +8,7 @@ public class UsuarioAdmi extends Usuario{
 	public UsuarioAdmi(String nombreUsuario, String password, int codigoUsuario, int tipoUsuario, Biblioteca bibliotecaInf) {
 		super(nombreUsuario, password, codigoUsuario, tipoUsuario);
 		this.setBibliotecaInf(bibliotecaInf);
-		// TODO Auto-generated constructor stub
+		
 	}
 	
 	public void agregarLibros() {
