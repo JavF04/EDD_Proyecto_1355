@@ -9,6 +9,7 @@ public class Libro {
 	private Integer cantidad_copias;
 	private String isbn;
 	private String estado;
+	private Integer COSTODIA=5;
 	
 	
 	
@@ -91,6 +92,12 @@ public class Libro {
 		JOptionPane.showMessageDialog(null, "\n Género: "+genero);
 		JOptionPane.showMessageDialog(null, "\n ISBN: "+isbn);
 
+	}
+	public Integer getCOSTODIA() {
+		return COSTODIA;
+	}
+	public void setCOSTODIA(Integer cOSTODIA) {
+		COSTODIA = cOSTODIA;
 	}
 	
 }
