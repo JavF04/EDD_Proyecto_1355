@@ -51,7 +51,7 @@ public class AdminArchivo {
         }
     }
 
-    public void crear_listas(MenuUsuario menu_usuario) throws ParseException {
+    public void crear_listas(MenuUsuario menu_usuario){
 
         ArrayList<String[]> datos_separados = new ArrayList<>();
         String nombreUsuario = null, password = null, libroPrestado = null, fecha = null;
@@ -81,19 +81,29 @@ public class AdminArchivo {
                             password = datos_separados.get(i)[j];
                             break;
                         case 2:
-                            codigo = Integer.parseInt(datos_separados.get(i)[j]);
-                            break;
+                        	if(datos_separados.get(i)[j] != " ") {
+                        		codigo = Integer.parseInt(datos_separados.get(i)[j]);
+                        	}
+                    		break;
                         case 3:
-                            tipo = Integer.parseInt(datos_separados.get(i)[j]);
+                        	if(datos_separados.get(i)[j] != " ") {
+                        		tipo = Integer.parseInt(datos_separados.get(i)[j]);
+                        	}
                             break;
                         case 4:
-                            libroPrestado = datos_separados.get(i)[j];
-                            break;
+                        	if(datos_separados.get(i)[j] != " ") {
+                        		libroPrestado = datos_separados.get(i)[j];
+                        	}
+                    		break;
                         case 5:
-                            multa = Float.parseFloat(datos_separados.get(i)[j]);
-                            break;
+                        	if(datos_separados.get(i)[j] != " ") {
+                        		multa = Float.parseFloat(datos_separados.get(i)[j]);
+                        	}
+                    		break;
                         case 6:
-                            fecha = datos_separados.get(i)[j];
+                        	if(datos_separados.get(i)[j] != " ") {
+                        		fecha = datos_separados.get(i)[j];
+                        	}
                             break;
                     }//cierra switch
                 }//cierra for
@@ -105,11 +115,16 @@ public class AdminArchivo {
                 }
 
                 String fechaPatron = "yyyy-MM-dd";
-
                 SimpleDateFormat dateFormat = new SimpleDateFormat(fechaPatron);
-                Date fecha_aux = dateFormat.parse(fecha);
+                Date fecha_aux = null;
+				try {
+					fecha_aux = dateFormat.parse(fecha);
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                 UsuarioCliente usuarioCliente_obj_aux = new UsuarioCliente(nombreUsuario, password, codigo, tipo, libro_aux, multa, fecha_aux);
-                menu_usuario.usuarios.add(usuarioCliente_obj_aux);
+                menu_usuario.usuarios_clientes.add(usuarioCliente_obj_aux);
             } else {
 
                 for (Integer j = 0; j < 6; j++) {
@@ -137,7 +152,7 @@ public class AdminArchivo {
 
                 UsuarioAdmi usuarioAdmi_obj_aux = new UsuarioAdmi(nombreUsuario, password, codigo, tipo, biblioteca_aux);
 
-                menu_usuario.usuarios.add(usuarioAdmi_obj_aux);
+                menu_usuario.usuarios_admin.add(usuarioAdmi_obj_aux);
             }//cierra else
         }
         //cierra for principal
