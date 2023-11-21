@@ -21,6 +21,18 @@ public class Biblioteca {
 		return i;
 	}
 	
-	
+	public void mostrarLibros() {
+	    JOptionPane.showMessageDialog(null, "La lista de libros es:");
+	    for (Libro libro : this.libros_biblioteca) {
+	        StringBuilder mensaje = new StringBuilder();
+	        mensaje.append("Título: ").append(libro.getTitulo()).append("\n")
+	                .append("Autor: ").append(libro.getAutor()).append("\n")
+	                .append("Género: ").append(libro.getGenero()).append("\n")
+	                .append("Cantidad de Copias: ").append(libro.getCantidad_copias()).append("\n")
+	                .append("Estado: ").append(libro.getEstado()).append("\n")
+	                .append("ISBN: ").append(libro.getIsbn()).append("\n");
+	        JOptionPane.showMessageDialog(null, mensaje.toString());
+	    }
+	}
 	
 }

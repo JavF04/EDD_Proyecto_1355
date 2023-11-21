@@ -120,7 +120,6 @@ public class AdminArchivo {
 				try {
 					fecha_aux = dateFormat.parse(fecha);
 				} catch (ParseException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
                 UsuarioCliente usuarioCliente_obj_aux = new UsuarioCliente(nombreUsuario, password, codigo, tipo, libro_aux, multa, fecha_aux);
@@ -158,4 +157,61 @@ public class AdminArchivo {
         //cierra for principal
 
     }//cierra funcion crear_lista
+    
+    public void actualizarCsv(Biblioteca biblioteca, MenuUsuario menu) {
+        String aux_user = this.nombre_archivo_usuarios;
+        String aux_book = this.nombre_archivo_libros;
+        try (BufferedWriter bw_users = new BufferedWriter(new FileWriter(aux_user));
+             BufferedWriter bw_books = new BufferedWriter(new FileWriter(aux_book))) {
+
+            // Actualizar archivo de usuarios
+            for (UsuarioCliente usuario : menu.usuarios_clientes) {
+                String[] userData = {
+                        usuario.getNombreUsuario(),
+                        usuario.getPassword(),
+                        String.valueOf(usuario.getCodigoUsuario()),
+                        String.valueOf(usuario.getTipoUsuario()),
+                        getNonNullISBN(usuario.getLibroPrestado()), // Aquí se maneja el caso de libro prestado nulo
+                        String.valueOf(usuario.getMulta()),
+                        new SimpleDateFormat("yyyy-MM-dd").format(usuario.getFechaPrestacion())
+                };
+                bw_users.write(this.joinStrings(",", userData));
+                bw_users.newLine();
+            }
+
+            // Actualizar archivo de libros
+            for (Libro libro : biblioteca.libros_biblioteca) {
+                String[] bookData = {
+                        getNonNull(libro.getTitulo()),
+                        getNonNull(libro.getAutor()),
+                        getNonNull(libro.getGenero()),
+                        String.valueOf(libro.getCantidad_copias()),
+                        getNonNull(libro.getIsbn()) // Aquí se maneja el caso de libro nulo
+                };
+                bw_books.write(this.joinStrings(",", bookData));
+                bw_books.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private String getNonNull(String value) {
+        return value != null ? value : ""; // Si el valor es nulo, retorna una cadena vacía
+    }
+
+    private String getNonNullISBN(Libro libro) {
+        return libro != null ? libro.getIsbn() : ""; // Si el libro es nulo, retorna una cadena vacía
+    }
+    
+    public String joinStrings(String delimiter, String[] strings) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < strings.length; i++) {
+            sb.append(strings[i]);
+            if (i < strings.length - 1) {
+                sb.append(delimiter);
+            }
+        }
+        return sb.toString();
+    }
 }

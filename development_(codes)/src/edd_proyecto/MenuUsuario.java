@@ -6,9 +6,10 @@ import javax.swing.*;
 	    private Biblioteca biblioteca;
 	    public ArrayList<UsuarioCliente> usuarios_clientes=new ArrayList<>();
 	    public ArrayList<UsuarioAdmi> usuarios_admin = new ArrayList<>();
-	    public MenuUsuario(Biblioteca biblioteca) {
+	    private AdminArchivo admin;
+	    public MenuUsuario(Biblioteca biblioteca, AdminArchivo admin) {
 	        this.biblioteca = biblioteca;
-
+	        this.admin = admin;
 	    }
 	    
 	    public Biblioteca getBiblioteca() {
@@ -20,6 +21,14 @@ import javax.swing.*;
 			this.biblioteca = biblioteca;
 		}
 
+		public AdminArchivo getAdmin() {
+			return admin;
+		}
+
+		public void setAdmin(AdminArchivo admin) {
+			this.admin = admin;
+		}
+		
 	    public Integer inicioDeSesion() {
 	    	Integer verificar = null;
 	    	String usuario = null, password = null;
@@ -38,7 +47,7 @@ import javax.swing.*;
 	    			this.menuOpciones(verificar);
 	    		}
 	    	}else {
-	    		this.menuAdmin();
+	    		this.menuAdmin(verificar);
 	    	}
 	    	return verificar;
 	    }
@@ -60,8 +69,7 @@ import javax.swing.*;
 		    	}
 		    	switch(eleccion) {
 		    		case 1:
-		    			
-		    			break;
+		    			this.biblioteca.mostrarLibros();		    			break;
 		    		case 2:
 		    			while(true) {
 		    				isbn_prestamo = null;
@@ -88,11 +96,36 @@ import javax.swing.*;
 		    			JOptionPane.showMessageDialog(null,"Hasta luego, buen día.");
 		    			return -1;
 				}
+		    	this.admin.actualizarCsv(this.biblioteca, this);
 	    	}
     	}
 	    
-	    public void menuAdmin() {
-	    	
+	    public Integer menuAdmin(Integer codigo_usuario) {
+	    	Integer eleccion = null;
+	    	while(true) {
+		    	JOptionPane.showMessageDialog(null, "Bienvenido " + this.usuarios_admin.get(codigo_usuario).getNombreUsuario());
+		    	while(true) {
+		    		eleccion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese una de las opciones:\n1) Ingresar libro. \n2) Eliminar libro.\n3) Modificar libro.\n4) Salir.\n:"));
+		    		if(eleccion>0 && eleccion<5) {
+		    			break;
+		    		}
+		    		JOptionPane.showMessageDialog(null,"Error. Ingrese un dato válido");
+		    	}
+		    	switch(eleccion) {
+		    	case 1:
+		    		this.usuarios_admin.get(codigo_usuario).agregarLibros();
+	    			break;
+	    		case 2:
+	    			this.usuarios_admin.get(codigo_usuario).eliminarLibros();	    			
+	    			break;
+	    		case 3:
+	    			this.usuarios_admin.get(codigo_usuario).modificarLibros();
+	    			break;
+	    		case 4:
+	    			JOptionPane.showMessageDialog(null,"Hasta luego, buen día.");
+	    			return -1;
+		    	}
+	    	}
 	    }
 	    private Integer verificarUsuario(String nombre_usuario, String password) {
 	    	Integer i = null;
@@ -113,6 +146,7 @@ import javax.swing.*;
 	    	}
 	    	return -1;
 	    }
+
 	}
 
 
