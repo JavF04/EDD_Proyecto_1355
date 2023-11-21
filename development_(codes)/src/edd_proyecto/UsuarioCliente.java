@@ -26,20 +26,29 @@ public class UsuarioCliente extends Usuario {
 
     public void prestarLibro(Libro libro, Date fechaPrestamo) {
         if (libroPrestado == null) {
-        	libro.setCantidad_copias(libro.getCantidad_copias()-1);
-            libroPrestado = libro;
-            fechaPrestacion = fechaPrestamo;
-            JOptionPane.showMessageDialog(null, "Libro prestado");
+        	if(libroPrestado.getCantidad_copias() > 0) {
+        		libro.setCantidad_copias(libro.getCantidad_copias()-1);
+                libroPrestado = libro;
+                fechaPrestacion = fechaPrestamo;
+                JOptionPane.showMessageDialog(null, "Libro prestado");
+        	}else {
+        		JOptionPane.showMessageDialog(null, "No hay copias disponbiles del libro.");
+        	}
+        	
         } else {
         	JOptionPane.showMessageDialog(null,"Ya tienes un libro prestado. Devuelve el libro actual antes de pedir otro.");
         }
     }
 
     public boolean devolverLibro(Date fechaDevolucion) {
-        if (libroPrestado != null) {
+        String confirmar = null;
+    	if (libroPrestado != null) {
         	multa=calcularMulta(fechaDevolucion);
-           
-            if(multa==0) {
+        	confirmar = JOptionPane.showInputDialog(null,"Deje vacio si desea devolver el libro: " + this.libroPrestado.getTitulo());
+            if(!confirmar.isEmpty()) {
+            	return false;
+            }
+        	if(multa==0) {
                 JOptionPane.showMessageDialog(null,"Libro devuelto correctamente.");
             }else {
                 JOptionPane.showMessageDialog(null,"Deuda: "+multa+ "\n PAGAR");

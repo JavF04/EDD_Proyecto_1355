@@ -3,14 +3,14 @@ package edd_proyecto;
 import javax.swing.JOptionPane;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args){
         Biblioteca biblioteca_obj = new Biblioteca();
+        AdminArchivo admin = new AdminArchivo();
        //  biblioteca_obj.crear_df()
         MenuUsuario menu_obj = new MenuUsuario(biblioteca_obj);
+        admin.crear_listas(biblioteca_obj);
+        admin.crear_listas(menu_obj);
         JOptionPane.showMessageDialog(null,"Bienvenido a \"Bukku \" su biblioteca favorita.");
-        if (menu_obj._menu_inicial(menu_obj._validar_usuario) == 0) {
-        	 JOptionPane.showMessageDialog(null,"Hasta la proxima"); 
+        menu_obj.inicioDeSesion();
         }
     }
-
-}

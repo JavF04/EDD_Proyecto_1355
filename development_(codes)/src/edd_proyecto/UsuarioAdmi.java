@@ -29,8 +29,8 @@ public class UsuarioAdmi extends Usuario{
 	public Boolean modificarLibros() {
 		Libro libroOriginal=null;
 		String isbn = JOptionPane.showInputDialog("Ingresa el ISBN del libro a modificar: ");
-		for(int i=0; i<this.bibliotecaInf.libros_biblioteca.size(); i++) {
-			if (this.bibliotecaInf.libros_biblioteca.get(i).getIsbn()==isbn) {
+		Integer i = this.bibliotecaInf.buscar_isbn(isbn);	
+		if (i != -1) {
 				libroOriginal = new Libro(this.bibliotecaInf.libros_biblioteca.get(i).getTitulo(),
 						
 						this.bibliotecaInf.libros_biblioteca.get(i).getAutor(),
@@ -40,13 +40,9 @@ public class UsuarioAdmi extends Usuario{
 				
 				this.bibliotecaInf.libros_biblioteca.remove(i);
 				this.bibliotecaInf.libros_biblioteca.add(libroOriginal);
-				break;
-			}
-			if( i == this.bibliotecaInf.libros_biblioteca.size()-1) {
-				JOptionPane.showMessageDialog(null, "El isbn ingresado no existe.");
+			}else {
 				return false;
 			}
-		}
 		
 		Libro libroRespaldo = null;
 
