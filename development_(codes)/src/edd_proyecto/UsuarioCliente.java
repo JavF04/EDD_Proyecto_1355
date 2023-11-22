@@ -1,7 +1,6 @@
 package edd_proyecto;
 
 import java.util.Date;
-
 import javax.swing.JOptionPane;
 
 public class UsuarioCliente extends Usuario {
@@ -26,11 +25,11 @@ public class UsuarioCliente extends Usuario {
 
     public void prestarLibro(Libro libro, Date fechaPrestamo) {
         if (libroPrestado == null) {
-        	if(libroPrestado.getCantidad_copias() > 0) {
+        	if(libro.getCantidad_copias() > 0) {
         		libro.setCantidad_copias(libro.getCantidad_copias()-1);
                 libroPrestado = libro;
                 fechaPrestacion = fechaPrestamo;
-                JOptionPane.showMessageDialog(null, "Libro prestado");
+                JOptionPane.showMessageDialog(null, "Libro prestado: " + libro.getTitulo());
         	}else {
         		JOptionPane.showMessageDialog(null, "No hay copias disponbiles del libro.");
         	}

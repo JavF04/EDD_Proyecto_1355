@@ -53,40 +53,64 @@ import javax.swing.*;
 	    }
 	    
 	    public Integer menuOpciones(Integer codigo_usuario) {
-	    	Integer eleccion = null, isbn_ubicacion = null;
-	    	String isbn_prestamo = null;
+	    	Integer eleccion = null, isbn_ubicacion = -1, eleccion_mostrar = null;
+	    	String isbn_prestamo = null, buscar_autor = null, buscar_libro = null;
 	    	Libro libro_aux = null;
 	    	Date fecha_accion = null;
+	    	Calendar calendario = Calendar.getInstance();
 	    	while(true) {
 		    	JOptionPane.showMessageDialog(null, "Bienvenido a la lista de opciones " + this.usuarios_clientes.get(codigo_usuario).getNombreUsuario());
 		    	while(true) {
-		    		JOptionPane.showMessageDialog(null,"1) Mostrar libros.\n2) Pedir préstamo.\n3) Devolver libro.\n4) Salir.");
+		    		JOptionPane.showMessageDialog(null,"1) Mostrar libros.\n2) Pedir préstamo.\n3) Devolver libro.\n4) Salir.\n5) Cambiar fecha.");
 		    		eleccion = Integer.parseInt(JOptionPane.showInputDialog("Ingrese una opción disponible."));
-		    		if(eleccion>0 && eleccion<5) {
+		    		if(eleccion>0 && eleccion<6) {
 		    			break;
 		    		}
 		    		JOptionPane.showMessageDialog(null, "Error en el dato ingresado.");
 		    	}
+		    	isbn_prestamo = null;
+		    	isbn_ubicacion = -1;
 		    	switch(eleccion) {
 		    		case 1:
-		    			this.biblioteca.mostrarLibros();		    			break;
+		    			eleccion_mostrar = Integer.parseInt(JOptionPane.showInputDialog("Opciones:\n1) Mostrar todos los libros.\n2)Buscar libros por autores.\n3)Buscar libro especifico.\nIngrese una opcion:"));
+		    			switch(eleccion_mostrar) {
+		    			case 1:
+		    				this.biblioteca.ordenarLibros();
+		    				this.biblioteca.mostrarLibros();
+		    				break;
+		    			case 2:
+		    				buscar_autor = null;
+		    				buscar_autor = JOptionPane.showInputDialog("Ingrese el autor a buscar:");
+		    				this.biblioteca.buscarAutor(buscar_autor);
+		    				break;
+		    			case 3:
+		    				buscar_libro = null;
+		    				buscar_libro = JOptionPane.showInputDialog("Ingrese el titulo del libro:");
+		    				for(Integer j = 0; j<this.biblioteca.libros_biblioteca.size(); j++) {
+		    					if(this.biblioteca.libros_biblioteca.get(j).getTitulo().equals(buscar_libro)) {
+		    						this.biblioteca.mostrarLibro(this.biblioteca.libros_biblioteca.get(j));
+		    					}
+		    				}
+		    				break;
+		    			}		    			
+		    			break;
 		    		case 2:
-		    			while(true) {
 		    				isbn_prestamo = null;
-		    				isbn_prestamo = JOptionPane.showInputDialog(null,"Ingrese el isbn del libro que desea, deje en blanco si desea regresar al menu:");
-		    				if(!isbn_prestamo.isEmpty()) {
-		    					break;
+		    				if(this.usuarios_clientes.get(codigo_usuario).getLibroPrestado() == null) {
+				    				isbn_prestamo = JOptionPane.showInputDialog(null,"Ingrese el isbn del libro que desea, deje en blanco si desea regresar al menu:");
+				    				isbn_ubicacion = this.biblioteca.buscar_isbn(isbn_prestamo);
+				    				if(isbn_ubicacion != -1) {
+				    					libro_aux = this.biblioteca.libros_biblioteca.get(isbn_ubicacion);
+				    				}
+		
+				    			if(isbn_ubicacion != -1) {
+				    				fecha_accion = new Date();
+				    				this.usuarios_clientes.get(codigo_usuario).prestarLibro(libro_aux, fecha_accion);
+			    				}	
+		    				}else {
+		    					fecha_accion = new Date();
+		    					this.usuarios_clientes.get(codigo_usuario).prestarLibro(this.usuarios_clientes.get(codigo_usuario).getLibroPrestado(), fecha_accion);
 		    				}
-		    				isbn_ubicacion = this.biblioteca.buscar_isbn(isbn_prestamo);
-		    				if(isbn_ubicacion != -1) {
-		    					libro_aux = this.biblioteca.libros_biblioteca.get(isbn_ubicacion);
-		    					break;
-		    				}
-		    			}
-		    			if(isbn_prestamo.isEmpty()) {
-		    				fecha_accion = new Date();
-		    				this.usuarios_clientes.get(codigo_usuario).prestarLibro(libro_aux, fecha_accion);
-	    				}
 		    			break;
 		    		case 3:
 		    			fecha_accion = new Date();
@@ -95,6 +119,15 @@ import javax.swing.*;
 		    		case 4:
 		    			JOptionPane.showMessageDialog(null,"Hasta luego, buen día.");
 		    			return -1;
+		    		case 5:
+		    			if(this.usuarios_clientes.get(codigo_usuario).getFechaPrestacion()!=null) {
+		    				calendario.setTime(this.usuarios_clientes.get(codigo_usuario).getFechaPrestacion());
+		    				 calendario.add(Calendar.WEEK_OF_YEAR, -1);
+		    				this.usuarios_clientes.get(codigo_usuario).setFechaPrestacion(calendario.getTime());
+		    			}else {
+		    				JOptionPane.showMessageDialog(null, "No tienes libros prestados");
+		    			}
+		    			break;
 				}
 		    	this.admin.actualizarCsv(this.biblioteca, this);
 	    	}
@@ -125,6 +158,7 @@ import javax.swing.*;
 	    			JOptionPane.showMessageDialog(null,"Hasta luego, buen día.");
 	    			return -1;
 		    	}
+		    	this.admin.actualizarCsv(this.biblioteca, this);
 	    	}
 	    }
 	    private Integer verificarUsuario(String nombre_usuario, String password) {
@@ -148,5 +182,3 @@ import javax.swing.*;
 	    }
 
 	}
-
-

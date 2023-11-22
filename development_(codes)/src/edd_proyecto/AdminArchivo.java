@@ -159,24 +159,42 @@ public class AdminArchivo {
     }//cierra funcion crear_lista
     
     public void actualizarCsv(Biblioteca biblioteca, MenuUsuario menu) {
-        String aux_user = this.nombre_archivo_usuarios;
-        String aux_book = this.nombre_archivo_libros;
-        try (BufferedWriter bw_users = new BufferedWriter(new FileWriter(aux_user));
-             BufferedWriter bw_books = new BufferedWriter(new FileWriter(aux_book))) {
+    	String fechaPatron = "yyyy-MM-dd";
+        SimpleDateFormat dateFormat = new SimpleDateFormat(fechaPatron);
+        try (BufferedWriter csv_users = new BufferedWriter(new FileWriter(this.nombre_archivo_usuarios, false));
+                BufferedWriter csv_books = new BufferedWriter(new FileWriter(this.nombre_archivo_libros, false))) {
 
             // Actualizar archivo de usuarios
             for (UsuarioCliente usuario : menu.usuarios_clientes) {
+            	if(usuario.getFechaPrestacion() == null) {
+            		try {
+						usuario.setFechaPrestacion(dateFormat.parse("0001-01-01"));
+					} catch (ParseException e) {
+						e.printStackTrace();
+					}
+            	}
                 String[] userData = {
                         usuario.getNombreUsuario(),
                         usuario.getPassword(),
                         String.valueOf(usuario.getCodigoUsuario()),
                         String.valueOf(usuario.getTipoUsuario()),
-                        getNonNullISBN(usuario.getLibroPrestado()), // Aquí se maneja el caso de libro prestado nulo
+                        getNonNullISBN(usuario.getLibroPrestado()),
                         String.valueOf(usuario.getMulta()),
                         new SimpleDateFormat("yyyy-MM-dd").format(usuario.getFechaPrestacion())
                 };
-                bw_users.write(this.joinStrings(",", userData));
-                bw_users.newLine();
+                csv_users.write(this.joinStrings(",", userData));
+                csv_users.newLine();
+            }
+            for (UsuarioAdmi usuarioA : menu.usuarios_admin) {
+            	String[] userDataA = {
+                        usuarioA.getNombreUsuario(),
+                        usuarioA.getPassword(),
+                        String.valueOf(usuarioA.getCodigoUsuario()),
+                        String.valueOf(usuarioA.getTipoUsuario()),
+                        ""
+            	};
+            	csv_users.write(this.joinStrings(",", userDataA));
+                csv_users.newLine();
             }
 
             // Actualizar archivo de libros
@@ -186,15 +204,17 @@ public class AdminArchivo {
                         getNonNull(libro.getAutor()),
                         getNonNull(libro.getGenero()),
                         String.valueOf(libro.getCantidad_copias()),
-                        getNonNull(libro.getIsbn()) // Aquí se maneja el caso de libro nulo
+                        getNonNull(libro.getIsbn())
                 };
-                bw_books.write(this.joinStrings(",", bookData));
-                bw_books.newLine();
+                csv_books.write(this.joinStrings(",", bookData));
+                csv_books.newLine();
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
+
 
     private String getNonNull(String value) {
         return value != null ? value : ""; // Si el valor es nulo, retorna una cadena vacía
@@ -204,14 +224,14 @@ public class AdminArchivo {
         return libro != null ? libro.getIsbn() : ""; // Si el libro es nulo, retorna una cadena vacía
     }
     
-    public String joinStrings(String delimiter, String[] strings) {
-        StringBuilder sb = new StringBuilder();
+    public String joinStrings(String coma, String[] strings) {
+        StringBuilder string = new StringBuilder();
         for (int i = 0; i < strings.length; i++) {
-            sb.append(strings[i]);
+        	string.append(strings[i]);
             if (i < strings.length - 1) {
-                sb.append(delimiter);
+            	string.append(coma);
             }
         }
-        return sb.toString();
+        return string.toString();
     }
 }
