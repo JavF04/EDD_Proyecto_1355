@@ -77,7 +77,7 @@ public class PortadaJ extends JFrame {
 		contentPane.add(lblTitulo);
 		
 		JLabel lblFondo = new JLabel("New label");
-		lblFondo.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\images4.jpg"));
+		lblFondo.setIcon(new ImageIcon("imagenes\\images4.jpg"));
 		lblFondo.setBounds(-12, 76, 759, 330);
 		contentPane.add(lblFondo);
 		

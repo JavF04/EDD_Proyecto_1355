@@ -72,7 +72,7 @@ public class CatalogoLibros extends JFrame {
 		});
 		btnNewButton_15.setVerticalAlignment(SwingConstants.TOP);
 		btnNewButton_15.setForeground(new Color(255, 255, 255));
-		btnNewButton_15.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Beowulf.jpg"));
+		btnNewButton_15.setIcon(new ImageIcon("imagenes\\Beowulf.jpg"));
 		getContentPane().add(btnNewButton_15);
 		
 		JButton btnNewButton_10 = new JButton("BatmanAñoUno");
@@ -86,7 +86,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 2" + "\n" );
 			}
 		});
-		btnNewButton_10.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Batman año uno.jpg"));
+		btnNewButton_10.setIcon(new ImageIcon("imagenes\\Batman año uno.jpg"));
 		getContentPane().add(btnNewButton_10);
 		
 		JButton btnNewButton_24 = new JButton("Menu\r\n");
@@ -111,7 +111,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 8 " + "\n" );
 			}
 		});
-		btnNewButton_6.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Hija de humo y hueso.jpg"));
+		btnNewButton_6.setIcon(new ImageIcon("imagenes\\Hija de humo y hueso.jpg"));
 		getContentPane().add(btnNewButton_6);
 		
 		JButton btnNewButton_5 = new JButton("Reina Roja");
@@ -125,7 +125,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 5 " + "\n" );
 			}
 		});
-		btnNewButton_5.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\ReinaRoja.jpg"));
+		btnNewButton_5.setIcon(new ImageIcon("imagenes\\ReinaRoja.jpg"));
 		getContentPane().add(btnNewButton_5);
 		
 		JButton btnNewButton_2 = new JButton("Pequeña princesa");
@@ -139,7 +139,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 7 " + "\n" );
 			}
 		});
-		btnNewButton_2.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Una pequeña princesa.jpg"));
+		btnNewButton_2.setIcon(new ImageIcon("imagenes\\Una pequeña princesa.jpg"));
 		getContentPane().add(btnNewButton_2);
 		
 		JButton btnNewButton_1 = new JButton("El poder de los habitos");
@@ -153,7 +153,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 2 " + "\n" );
 			}
 		});
-		btnNewButton_1.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\El poder de los habitos.jpg"));
+		btnNewButton_1.setIcon(new ImageIcon("imagenes\\El poder de los habitos.jpg"));
 		getContentPane().add(btnNewButton_1);
 		
 		JButton btnNewButton_3 = new JButton("Hopeless");
@@ -167,7 +167,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 4 " + "\n" );
 			}
 		});
-		btnNewButton_3.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\El caballo y su niño.jpg"));
+		btnNewButton_3.setIcon(new ImageIcon("imagenes\\El caballo y su niño.jpg"));
 		getContentPane().add(btnNewButton_3);
 		
 		JButton btnNewButton_4 = new JButton(":The Way of Kings");
@@ -182,7 +182,7 @@ public class CatalogoLibros extends JFrame {
 			}
 		});
 		btnNewButton_4.setHorizontalAlignment(SwingConstants.LEFT);
-		btnNewButton_4.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\El conejo de pana.jpg"));
+		btnNewButton_4.setIcon(new ImageIcon("imagenes\\El conejo de pana.jpg"));
 		getContentPane().add(btnNewButton_4);
 		
 		JButton btnNewButton_8 = new JButton("The war of the Worlds");
@@ -196,7 +196,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 4 " + "\n" );
 			}
 		});
-		btnNewButton_8.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\The war of the Worlds.jpg"));
+		btnNewButton_8.setIcon(new ImageIcon("imagenes\\The war of the Worlds.jpg"));
 		getContentPane().add(btnNewButton_8);
 		
 		JButton btnNewButton_7 = new JButton(" The Language of Flowers");
@@ -210,7 +210,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 5 " + "\n" );
 			}
 		});
-		btnNewButton_7.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\pretty-little-.jpg"));
+		btnNewButton_7.setIcon(new ImageIcon("imagenes\\pretty-little-.jpg"));
 		getContentPane().add(btnNewButton_7);
 		
 		JButton btnNewButton_12 = new JButton("Go Set a Watchman");
@@ -224,7 +224,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 3 " + "\n" );
 			}
 		});
-		btnNewButton_12.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\dilenma.jpg"));
+		btnNewButton_12.setIcon(new ImageIcon("imagenes\\dilenma.jpg"));
 		getContentPane().add(btnNewButton_12);
 		
 		JButton btnNewButton = new JButton("Corduroy");
@@ -238,7 +238,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 3 " + "\n" );
 			}
 		});
-		btnNewButton.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\corduroy.jpg"));
+		btnNewButton.setIcon(new ImageIcon("imagenes\\corduroy.jpg"));
 		getContentPane().add(btnNewButton);
 		
 		JButton btnNewButton_9 = new JButton("Life after life");
@@ -252,7 +252,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 3 " + "\n" );
 			}
 		});
-		btnNewButton_9.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\life after life.jpg"));
+		btnNewButton_9.setIcon(new ImageIcon("imagenes\\life after life.jpg"));
 		getContentPane().add(btnNewButton_9);
 		
 		JButton btnNewButton_16 = new JButton("The rescue");
@@ -266,7 +266,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 9 " + "\n" );
 			}
 		});
-		btnNewButton_16.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\The rescue.jpg"));
+		btnNewButton_16.setIcon(new ImageIcon("imagenes\\The rescue.jpg"));
 		getContentPane().add(btnNewButton_16);
 		
 		JButton btnNewButton_11 = new JButton("Needful");
@@ -280,7 +280,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 8" + "\n" );
 			}
 		});
-		btnNewButton_11.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Needful.jpg"));
+		btnNewButton_11.setIcon(new ImageIcon("imagenes\\Needful.jpg"));
 		getContentPane().add(btnNewButton_11);
 		
 		JButton btnNewButton_13 = new JButton("voyager");
@@ -294,7 +294,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 7 " + "\n" );
 			}
 		});
-		btnNewButton_13.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\voyager.jpg"));
+		btnNewButton_13.setIcon(new ImageIcon("imagenes\\voyager.jpg"));
 		getContentPane().add(btnNewButton_13);
 		
 		JButton btnNewButton_14 = new JButton("Hamlet");
@@ -308,7 +308,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 6 " + "\n" );
 			}
 		});
-		btnNewButton_14.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\Hamlet.jpg"));
+		btnNewButton_14.setIcon(new ImageIcon("imagenes\\Hamlet.jpg"));
 		getContentPane().add(btnNewButton_14);
 		
 		JButton btnNewButton_17 = new JButton("Cujo");
@@ -322,7 +322,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 5 " + "\n" );
 			}
 		});
-		btnNewButton_17.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\cujo.jpg"));
+		btnNewButton_17.setIcon(new ImageIcon("imagenes\\cujo.jpg"));
 		getContentPane().add(btnNewButton_17);
 		
 		JButton btnNewButton_18 = new JButton("Madame bovary");
@@ -337,7 +337,7 @@ public class CatalogoLibros extends JFrame {
 			}
 		});
 		btnNewButton_18.setVerticalAlignment(SwingConstants.TOP);
-		btnNewButton_18.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\madame bovary.jpg"));
+		btnNewButton_18.setIcon(new ImageIcon("imagenes\\madame bovary.jpg"));
 		getContentPane().add(btnNewButton_18);
 		
 		JButton btnNewButton_19 = new JButton("The phantom");
@@ -351,7 +351,7 @@ public class CatalogoLibros extends JFrame {
                         "Copias Disponibles: 3 " + "\n" );
 			}
 		});
-		btnNewButton_19.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\the phantom.jpg"));
+		btnNewButton_19.setIcon(new ImageIcon("imagenes\\the phantom.jpg"));
 		getContentPane().add(btnNewButton_19);
 		
 		JButton btnNewButton_21 = new JButton("Are you my nother?");
@@ -366,7 +366,7 @@ public class CatalogoLibros extends JFrame {
 			}
 		});
 		btnNewButton_21.setVerticalAlignment(SwingConstants.BOTTOM);
-		btnNewButton_21.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\maxresdefault.jpg"));
+		btnNewButton_21.setIcon(new ImageIcon("imagenes\\maxresdefault.jpg"));
 		getContentPane().add(btnNewButton_21);
 		
 		JButton btnNewButton_20 = new JButton("The story of art");
@@ -381,7 +381,7 @@ public class CatalogoLibros extends JFrame {
 			}
 		});
 		btnNewButton_20.setVerticalAlignment(SwingConstants.TOP);
-		btnNewButton_20.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\the story of art.jpg"));
+		btnNewButton_20.setIcon(new ImageIcon("imagenes\\the story of art.jpg"));
 		getContentPane().add(btnNewButton_20);
 		
 		JButton btnNewButton_22 = new JButton("Christine");
@@ -397,7 +397,7 @@ public class CatalogoLibros extends JFrame {
 			}
 		});
 		btnNewButton_22.setVerticalAlignment(SwingConstants.TOP);
-		btnNewButton_22.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\christine.jpg"));
+		btnNewButton_22.setIcon(new ImageIcon("imagenes\\christine.jpg"));
 		getContentPane().add(btnNewButton_22);
 		
 		JButton btnNewButton_23 = new JButton("Vortaire");
@@ -411,7 +411,7 @@ public class CatalogoLibros extends JFrame {
 				                                    "Copias Disponibles: 5 " + "\n" );
 			}
 		});
-		btnNewButton_23.setIcon(new ImageIcon("C:\\Users\\PG\\Downloads\\voltaire.jpg"));
+		btnNewButton_23.setIcon(new ImageIcon("imagenes\\voltaire.jpg"));
 		getContentPane().add(btnNewButton_23);
 		
 		
