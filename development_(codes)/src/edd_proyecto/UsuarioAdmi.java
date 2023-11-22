@@ -38,7 +38,7 @@ public class UsuarioAdmi extends Usuario{
 						this.bibliotecaInf.libros_biblioteca.get(i).getCantidad_copias(),
 						this.bibliotecaInf.libros_biblioteca.get(i).getIsbn());
 				
-				this.bibliotecaInf.libros_biblioteca.remove(i);
+				this.bibliotecaInf.libros_biblioteca.remove(this.bibliotecaInf.libros_biblioteca.get(i));
 				this.bibliotecaInf.libros_biblioteca.add(libroOriginal);
 			}else {
 				return false;
@@ -60,25 +60,25 @@ public class UsuarioAdmi extends Usuario{
 
             // Lógica para modificar el libro
             String nuevoTitulo = JOptionPane.showInputDialog("Ingresa el nuevo título o deja en blanco");
-            if (!nuevoTitulo.isEmpty()) {
+            if (nuevoTitulo.equals("")) {
                 libroOriginal.setTitulo(nuevoTitulo);
                
             }
 
             String nuevoAutor = JOptionPane.showInputDialog("Ingresa el nuevo autor o deja en blanco");
-            if (!nuevoAutor.isEmpty()) {
+            if (!nuevoAutor.equals("")) {
                 libroOriginal.setAutor(nuevoAutor);
              
             }
 
             String nuevoGenero = JOptionPane.showInputDialog("Ingresa el nuevo género o deja en blanco");
-            if (!nuevoGenero.isEmpty()) {
+            if (!nuevoGenero.equals("")) {
                 libroOriginal.setGenero(nuevoGenero);
                
             }
 
             String nuevaCantidadCopiasStr = JOptionPane.showInputDialog("Ingresa la nueva cantidad de copias o deja en blanco");
-            if (!nuevaCantidadCopiasStr.isEmpty()) {
+            if (!nuevaCantidadCopiasStr.equals("")) {
                 try {
                     int nuevaCantidadCopias = Integer.parseInt(nuevaCantidadCopiasStr);
                     libroOriginal.setCantidad_copias(nuevaCantidadCopias);
@@ -89,7 +89,7 @@ public class UsuarioAdmi extends Usuario{
             }
 
             String nuevoIsbn = JOptionPane.showInputDialog("Ingresa el nuevo ISBN o deja en blanco");
-            if (!nuevoIsbn.isEmpty()) {
+            if (!nuevoIsbn.equals("")) {
                 libroOriginal.setIsbn(nuevoIsbn);
                
             }
@@ -102,18 +102,13 @@ public class UsuarioAdmi extends Usuario{
 	
 	public boolean eliminarLibros() {
 		String isbn = JOptionPane.showInputDialog("Ingresa el ISBN del libro a eliminar: ");
-		for(int i=0; i<this.bibliotecaInf.libros_biblioteca.size(); i++) {
-			if (this.bibliotecaInf.libros_biblioteca.get(i).getIsbn()==isbn) {
-				this.bibliotecaInf.libros_biblioteca.remove(i);
-				break;
+		Integer ubicacion = this.bibliotecaInf.buscar_isbn(isbn);
+			if (ubicacion != -1) {
+				this.bibliotecaInf.libros_biblioteca.remove(this.getBibliotecaInf().libros_biblioteca.get(ubicacion));
+				JOptionPane.showMessageDialog(null, "Libro Eliminado" );
+				 return true;
 			}
-			if( i == this.bibliotecaInf.libros_biblioteca.size()-1) {
-				JOptionPane.showMessageDialog(null, "El isbn ingresado no existe.");
-				return false;
-			}
-		}
-		 JOptionPane.showMessageDialog(null, "Libro Eliminado" );
-		 return true;
+			return false;
 	}
 
 	public Biblioteca getBibliotecaInf() {
