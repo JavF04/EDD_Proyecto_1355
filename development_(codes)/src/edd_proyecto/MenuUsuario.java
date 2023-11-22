@@ -108,8 +108,7 @@ import javax.swing.*;
 				    				this.usuarios_clientes.get(codigo_usuario).prestarLibro(libro_aux, fecha_accion);
 			    				}	
 		    				}else {
-		    					fecha_accion = new Date();
-		    					this.usuarios_clientes.get(codigo_usuario).prestarLibro(this.usuarios_clientes.get(codigo_usuario).getLibroPrestado(), fecha_accion);
+		    					JOptionPane.showMessageDialog(null, "Ya tiene un libro prestado.");
 		    				}
 		    			break;
 		    		case 3:
