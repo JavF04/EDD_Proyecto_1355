@@ -47,7 +47,8 @@ public class UsuarioAdmi extends Usuario{
 		Libro libroRespaldo = null;
 
         // Mostrar los datos originales del libro
-        JOptionPane.showMessageDialog(null, "Datos originales del libro:\n" + libroOriginal.toString());
+        JOptionPane.showMessageDialog(null, "Datos originales del libro:\n");
+        this.bibliotecaInf.mostrarLibro(libroOriginal);
 
         String respuesta = JOptionPane.showInputDialog("¿Deseas cambiar algo del libro? (si/no)");
 
